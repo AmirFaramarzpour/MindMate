@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Mate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #001B2D;
+            background-image: url("https://ik.imagekit.io/0daytaken/symmetry-geometric-colorful-lines-5k-3840x2160-7761.jpg?updatedAt=1738803213115");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            margin: 0;
+            color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .container:hover {
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .section {
+            padding: 20px;
+            background-color: #232F3B;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .chat-box, .prompt-box {
+            height: auto;
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px solid #444;
+            padding: 15px;
+            background-color: #2D3E50;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+            color: #FFFFFF;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .chat-box:hover, .prompt-box:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .send-btn {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .send-btn button {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            border-radius: 15px;
+            background-color: #A67C52;
+            border: none;
+            color: #FFF;
+            transition: background-color 0.3s ease;
+        }
+
+        .send-btn button:hover {
+            background-color: #9E6F3D;
+        }
+
+        .send-btn button i {
+            margin-right: 8px;
+        }
+
+        p.transparent-title {
+            font-family: "Rowdies", serif;
+            background-color: #09122C;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            color: #27667B;
+            text-transform: none;
+            margin-bottom: 30px;
+        } 
+
+        /* Social Icons Styling */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #A67C52;
+        }
+
+        /* Copyright Text */
+        .footer-text {
+            color: #FFF;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 767px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1.transparent-title {
+                font-size: 1.8rem;
+                padding: 10px;
+            }
+
+            .send-btn {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .send-btn button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .chat-box, .prompt-box {
+                max-height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <p class="transparent-title">Mind Mate <sub style="font-size: 0.8rem;">BETA</sub></p>
+
+        <div class="section">
+            <div id="ai-response" class="chat-box mb-3"></div>
+            <textarea id="ai-prompt" placeholder="Enter your message here..." class="form-control mb-2 prompt-box" rows="4"></textarea>
+            <div class="send-btn">
+                <button class="btn btn-primary" id="ai-send-button"><i class="fas fa-paper-plane"></i> Send</button>
+                <button class="btn btn-secondary" id="copy-button"><i class="fas fa-copy"></i> Copy</button>
+                <button class="btn btn-success" id="save-button"><i class="fas fa-file-download"></i> Save as .txt</button>
+                <button class="btn btn-warning" id="clear-button"><i class="fas fa-trash-alt"></i> Clear</button>
+                <button class="btn btn-info" id="theme-toggle-button"><i class="fas fa-adjust"></i> Theme</button>
+                <button class="btn btn-secondary" id="settings-button"><i class="fas fa-cogs"></i> Settings</button>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://t.me/HotChartMusic" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.youtube.com/@rootkitraven" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://github.com/amirfaramarzpour" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://amirfaramarzpour.ir" target="_blank"><i class="fas fa-globe"></i></a> <!-- Website Icon -->
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="footer-text" style="text-align: center; font-family: 'Rowdies', serif; font-size:0.8rem ; text-justify: inter-word;"> 
+            &copy; "Amir Faramarzpour"</br> Home Network (LAN) OpenAI's API for GPT-4 Mini.</br> TP-LINK 150Mbps Wireless N ADSL2+ Modem Router</br>
+Firmware Version:4.0.0 Build 150521 Rel.32642   MAC Address:60:e3:27:4c:90:af
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('ai-send-button').addEventListener('click', async function() {
+            const prompt = document.getElementById('ai-prompt').value;
+            const responseBox = document.getElementById('ai-response');
+            const timestamp = new Date().toLocaleTimeString();
+            if (prompt.trim() !== "") {
+                responseBox.innerHTML += `<div><strong>Me (${timestamp}):</strong> ${prompt}</div>`;
+                document.getElementById('ai-prompt').value = "";
+                try {
+                    const response = await axios.post('/api/ai', { prompt });
+                    responseBox.innerHTML += `<div><strong>Mate (${new Date().toLocaleTimeString()}):</strong> ${response.data.response || response.data.error}</div>`;
+                    responseBox.scrollTop = responseBox.scrollHeight; // Scroll to the bottom
+                } catch (error) {
+                    responseBox.innerHTML += `<div class="alert alert-danger">An error occurred. Please try again later.</div>`;
+                }
+            }
+        });
+
+        document.getElementById('copy-button').addEventListener('click', function() {
+            const responseBox = document.getElementById('ai-response');
+            const range = document.createRange();
+            range.selectNodeContents(responseBox);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+        });
+
+        document.getElementById('save-button').addEventListener('click', function() {
+            const responseBox = document.getElementById('ai-response').innerText;
+            const blob = new Blob([responseBox], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'ai_response.txt';
+            a.click();
+        });
+
+        document.getElementById('clear-button').addEventListener('click', function() {
+            document.getElementById('ai-response').innerHTML = "";
+        });
+
+        document.getElementById('theme-toggle-button').addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+        });
+
+        document.getElementById('settings-button').addEventListener('click', function() {
+            alert('Settings panel will be added here soon!.');
+        });
+    </script>
+</body>
+</html>
