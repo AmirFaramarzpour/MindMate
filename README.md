@@ -1,4 +1,4 @@
-# AI Assistant WebApp
+# MindMate AI Assistant WebApp
 
 This is an AI assistant web application built using Flask. It leverages various AI capabilities to interact with users, providing support, answering questions, brainstorming ideas, and more.
 
