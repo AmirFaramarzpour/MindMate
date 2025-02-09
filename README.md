@@ -1,4 +1,4 @@
-# MindMate AI Assistant WebApp
+# MindMate ## AI Assistant WebApp
 
 This is an AI assistant web application built using Flask. It leverages various AI capabilities to interact with users, providing support, answering questions, brainstorming ideas, and more.
 
@@ -20,8 +20,8 @@ Ensure you have the following installed:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/AmirFaramarzpour/AI-Assistant-WebApp.git
-    cd ai-assistant-webapp
+    git clone https://github.com/AmirFaramarzpour/MindMate.git
+    cd MindMate
     ```
 
 2. Install the required dependencies:
@@ -37,7 +37,7 @@ Ensure you have the following installed:
 
 3. Run the application:
     ```sh
-    Edit the code anf add your own api-key string ""
+    Edit the code and add your own api-key string ""
     python3 app.py
     ```
 
